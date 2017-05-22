@@ -10,11 +10,15 @@ lunchApp.controller('mainController', ['$scope','$http', function($scope, $http)
 	}
 
 	const handleListOfReataurants = function(data){
-		//$scope.hello = _.get(data, '[0].name');
-		$scope.hello = data[0];
+		$scope.lunchOptions = data.data.restaurants;
 	}
 
 	$http.get('/getRestaurants')
 	.then(handleListOfReataurants, handleErrorOnGet);
+
+	$scope.selectedOption = function (restaurant){
+		$http.post('/setVote?restaurantId:'+restaurant._id)
+		restaurant.totalVotes++;
+	}
 
 }]);

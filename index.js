@@ -1,12 +1,22 @@
 const seedData = require('./seed.js');
-var port = process.env.PORT || 3000;
+var bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
 
+var port = process.env.PORT || 3000;
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+
 app.use(express.static('./public/'));
 
+// routes -------------------------------------------------------------
 app.get('/getRestaurants', function (req, res) {
-  res.send(seedData);
+  res.send(JSON.stringify(seedData));
+})
+
+app.post('/setVote', function (req, res) {
+  console.log('DATA: ', req.body)
+  res.send();
 })
 
  // application -------------------------------------------------------------
