@@ -1,15 +1,14 @@
 {
-  "name": "lunch-app-server",
+  "name": "lunch-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hariel Giacomuzzi",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.15.3"
+  "devDependencies": {
+    "bower": "^1.8.0"
   }
 }
