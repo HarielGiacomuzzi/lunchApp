@@ -23,5 +23,13 @@ describe('Testing Restaurant Routes', ()=>{
         })
     });
 
+    // testar se só posso votar 1 vez
+
+    // testar que só posso votar em 1 restaurante
+
+    // testar se não posso votar em nenhum restaurante uma vez que já tenha votado no dia de hoje
+
+    // testar se na UI aparece o total de votos e se está certo com o backend
+
     
 });

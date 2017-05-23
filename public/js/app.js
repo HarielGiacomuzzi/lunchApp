@@ -1,11 +1,13 @@
 'use strict';
 
-var lunchApp = angular.module('lunchApp', []);
-
-lunchApp.controller('mainController', ['$scope','$http', 'socketio', function($scope, $http, socketio){
+angular.module('lunchApp', []).controller('mainController', ['$scope','$http', 'socketio', function($scope, $http, socketio){
 
 	socketio.on('newVote', function(msg){
-		console.log('SOCKET MSG: ', msg);
+		$scope.lunchOptions.forEach(function(item, index) {
+			if(item._id === msg._id){
+				$scope.lunchOptions[index] = msg;	
+			}
+		}, this);
 	});
 
 	const handleErrorOnGet = function(error){

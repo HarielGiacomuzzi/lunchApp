@@ -48,6 +48,12 @@ app.get('*', function (req, res) {
     res.send(__dirname + '/public/index.html');
 });
 
-app.listen(port, function () {
+// Socket -------------------------------------------------------------------
+io.on("connection", function(socket){
+  console.log('connected');
+});
+
+
+http.listen(port, function () {
   console.log('Lunch App server running on port 3000!')
 })
