@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000"
   },
   "author": "Hariel Giacomuzzi",
   "license": "ISC",
@@ -14,6 +14,9 @@
     "express": "^4.15.3"
   },
   "devDependencies": {
-    "bower": "^1.8.0"
+    "bower": "^1.8.0",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.1"
   }
 }
