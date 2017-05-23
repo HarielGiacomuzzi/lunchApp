@@ -4,32 +4,24 @@
 		<title>Lunch App</title>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="js/app.js"></script>
+    <script src="../node_modules/socketio/socket.io.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	</head>
 	<body ng-controller="mainController">
 
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-
         <div class="navbar-header">
           <a class="navbar-brand">Lunch App</a>
-	    </div>
-
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <a>Restaurants</a>
-            </li>
-            <li>
-              <a>Voting Status</a>
-            </li>
-          </ul>
-        </div>
-
+	      </div>
       </div>
     </div>
 
-		<div class="container" style="margin-top:100px;">
+    <div class="container" style="margin-top:5%;" >
+      <input type="text" placeholder="type in your e-mail please" required="true" ng-model="voterEmail">
+    </div>
+    
+		<div class="container" style="margin-top:10px;">
 			<div class="btn-group btn-group-justified" role="group">
         <div class="btn-group" role="group" ng-repeat="restaurant in lunchOptions">
           <button type="button" ng-click="selectedOption(restaurant)" class="btn btn-default">{{restaurant.name}}</button>
@@ -44,7 +36,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-6 col-md-3" ng-repeat="restaurant in lunchOptions">
-          <span class="label label-default">Votes for:{{restaurant.name + ' ' + restaurant.totalVotes}}</span>
+          <span class="label label-default" style="font-size:13px; width:100%;">Votes for:{{restaurant.name + ' ' + restaurant.totalVotes}}</span>
         </div>
       </div>      
     </div>

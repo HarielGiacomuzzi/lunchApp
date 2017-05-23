@@ -6,11 +6,13 @@ let server = require('../index.js');
 chai.use(chaiHttp);
 
 describe('Testing Restaurant Routes', ()=>{
-    describe('/GET restaurants', ()=>{
+
+    describe('GET /restaurants', ()=>{
         it('it should get all the restaurants', (done)=>{
             chai.request('http://localhost:3000')
                 .get('/getRestaurants')
                 .end((err, res) => {
+                    expect(err).to.be.null;
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('restaurants');
@@ -20,4 +22,6 @@ describe('Testing Restaurant Routes', ()=>{
                  });
         })
     });
+
+    
 });
