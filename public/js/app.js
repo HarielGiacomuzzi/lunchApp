@@ -24,6 +24,11 @@ angular.module('lunchApp', []).controller('mainController', ['$scope','$http', '
 		$scope.lunchOptions = response.data;
 	}
 
+	const setWinner = function(response){
+		console.log(response.data)
+		$scope.winner = response.data.name;
+	}
+
 	$http.get('/restaurants')
 	.then(handleListOfReataurants, handleErrorOnGet);
 
@@ -36,8 +41,13 @@ angular.module('lunchApp', []).controller('mainController', ['$scope','$http', '
 		if($scope.voterEmail && validateEmail($scope.voterEmail) || true){
 			$http.post('/restaurants', {'restaurantId' : restaurant._id, 'email': $scope.voterEmail})
 			.catch(handleErrorOnPost);
-			restaurant.totalVotes++;
 		}
+	}
+
+	$scope.endVoting = function (){
+		console.log('chegueiAqui');
+		$http.get('/endVoting')
+		.then(setWinner, handleErrorOnGet);
 	}
 
 }])

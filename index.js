@@ -26,22 +26,36 @@ app.route('/restaurants')
     res.send(staticData);
   })
   .post((req,res) => {
-      let restautantId = req.body.restaurantId;
-      let email = req.body.email;
-      let hasVoted = alreadyVoted.find((item)=>{
-          return item === email;
-      });
-      if(!hasVoted){
-          staticData.forEach(function(restautant) {
+      var restautantId = req.body.restaurantId;
+      var email = req.body.email;
+      var result = alreadyVoted.filter(function( obj ) {return obj.email == email;});
+      if(result.length == 0){
+          staticData.forEach((restautant)=>{
               if(restautant._id === restautantId){
                   restautant.totalVotes++;
                   io.emit('newVote', restautant);
               }
           });
-          alreadyVoted.push(email)
+          alreadyVoted.push({'email' : email, 'date' : new Date()})
+          res.status(202).end();
       }
+      res.status(203).end();
     }
   );
+
+app.route('/endVoting')
+  .get((req,res)=>{
+    var maxVotes = 0;
+    var index = 0;
+    staticData.forEach((item,idx)=>{
+      if(item.totalVotes > maxVotes){
+        maxVotes = item.totalVotes;
+        index = idx;
+      }
+    });
+    staticData[index].lastWin = new Date();
+    res.send(staticData[index]);
+  });
 
  // application -------------------------------------------------------------
 app.get('*', function (req, res) {
@@ -49,9 +63,9 @@ app.get('*', function (req, res) {
 });
 
 // Socket -------------------------------------------------------------------
-io.on("connection", function(socket){
-  console.log('connected');
-});
+// io.on("connection", function(socket){
+//   console.log('connected');
+// });
 
 
 http.listen(port, function () {

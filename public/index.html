@@ -18,15 +18,21 @@
     </div>
 
     <div class="container" style="margin-top:5%;" >
-      <input type="text" placeholder="type in your e-mail please" required="true" ng-model="voterEmail">
+      <div class="row">
+        <div class="col-xs-3">
+          <input type="text" placeholder="type in your e-mail please" required="true" ng-model="voterEmail">  
+          <h1 ng-if="winner">{{winner.name}}</h1>
+          <button type="button" ng-click="endVoting()" class="btn btn-danger">End Voting</button>
+        </div>
+      </div>
     </div>
     
 		<div class="container" style="margin-top:10px;">
-			<div class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" role="group" ng-repeat="restaurant in lunchOptions">
-          <button type="button" ng-click="selectedOption(restaurant)" class="btn btn-default">{{restaurant.name}}</button>
-        </div>
-      </div>
+			<!--<div class="btn-group btn-group-justified" role="group">-->
+        <!--<div class="btn-group" role="group" ng-repeat="restaurant in lunchOptions">-->
+          <button type="button" ng-click="selectedOption(restaurant)" ng-repeat="restaurant in lunchOptions" class="btn btn-primary btn-lg btn-block">{{restaurant.name}}</button>
+        <!--</div>-->
+      <!--</div>-->
 		</div>
 
     <div class="container">
