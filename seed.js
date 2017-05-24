@@ -4,7 +4,7 @@ module.exports = {
             '_id': 'fbe22523-9192-40c6-935a-72c6237114c2',
             'name': 'Restaurant A',
             'totalVotes' : 0,
-            'lastWin': undefined
+            'lastWin': 1495644620
         },
         {
             '_id': 'f4e8de05-99d2-4c2e-8f0d-d35fde2851d9',
