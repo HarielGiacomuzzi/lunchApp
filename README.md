@@ -41,7 +41,7 @@
     the point is that in such simple project this coud take more time than the development it self once 
     those tests needs to be very carefully implemented. Here I've moved all the logic to the backend and
     test the business logic there, for the front end however I decided to not automate it and only do manual
-    testing, I don't recommend this to be done, but again, in such small project (and with this amount of time )
+    testing, I don't recommend this to be done, but again, in such small project (and with this amount of time)
     I fell that the relation of cost and benefict of doing this whould not whorth it so with this in mind the manual testing I believe to be the best choice for the UI in here.
 
     H - UI, this is the most relevant part of the system because in the end of the day this is what the client
